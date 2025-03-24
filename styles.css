@@ -363,7 +363,63 @@ footer {
     #servicos h2, #sobre h2 {
         font-size: 2rem;
     }
+    /* Botão do Grupo WhatsApp */
+.whatsapp-group-button {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    background-color: #25D366;
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    text-decoration: none;
+}
+
+.whatsapp-group-button i {
+    font-size: 1.3rem;
+}
+
+.group-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #25D366;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 500;
+    margin-top: 10px;
+}
+
+.group-link i {
+    font-size: 1.2rem;
+}
+
+/* Ajuste para desktop */
+@media (min-width: 768px) {
+    .whatsapp-group-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+        bottom: 100px;
+    }
     
+    .whatsapp-group-button i {
+        font-size: 1.5rem;
+    }
+    
+    .group-link {
+        padding: 10px 20px;
+    }
+}
     .whatsapp-button {
         width: 60px;
         height: 60px;
