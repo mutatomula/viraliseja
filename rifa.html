@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Rifa de 10K Seguidores | Instagram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="instagram-container">
+        <header class="instagram-header">
+            <div class="header-content">
+                <h1><i class="fas fa-crown"></i> Rifa 10K Seguidores</h1>
+                <p>Ganhe 10 mil seguidores reais no Instagram!</p>
+            </div>
+        </header>
+
+        <main class="instagram-main">
+            <div class="story-highlight">
+                <div class="highlight-item">
+                    <div class="highlight-circle">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <span>Prêmio</span>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-circle">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span>10K</span>
+                </div>
+                <div class="highlight-item">
+                    <div class="highlight-circle">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <span>Rifas</span>
+                </div>
+            </div>
+
+            <div class="rifa-card">
+                <div class="card-header">
+                    <div class="profile-pic" id="profilePic">R</div>
+                    <span>rifa_10k_oficial</span>
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Rifa 10K Seguidores" id="postImage">
+                </div>
+                
+                <div class="card-actions">
+                    <div class="action-left">
+                        <i class="far fa-heart"></i>
+                        <i class="far fa-comment"></i>
+                        <i class="far fa-paper-plane"></i>
+                    </div>
+                    <i class="far fa-bookmark"></i>
+                </div>
+                
+                <div class="card-likes">
+                    <span>Curtido por <strong>marketingdigital</strong> e <strong>outras 1.243 pessoas</strong></span>
+                </div>
+                
+                <div class="card-description">
+                    <p><strong>rifa_10k_oficial</strong> 🎉 PARTICIPE DA RIFA E GANHE 10K SEGUIDORES REAIS! 🎉</p>
+                    <p>🔹 Cada número custa apenas R$5,50</p>
+                    <p>🔹 Total de 1.000 números disponíveis</p>
+                    <p>🔹 Escolha seus números ou receba aleatórios</p>
+                    <p>🔹 Sorteio será transmitido ao vivo</p>
+                    <p>🔹 Entrega imediata após confirmação</p>
+                    <p>#Rifa10K #Sorteio #InstagramGrowth</p>
+                </div>
+            </div>
+
+            <div class="rifa-form-container">
+                <div id="errorAlert" class="alert alert-error" style="display: none;"></div>
+                <div id="successAlert" class="alert alert-success" style="display: none;"></div>
+                
+                <h2><i class="fas fa-ticket-alt"></i> Compre seus números</h2>
+                
+                <form id="rifaForm">
+                    <div class="form-group insta-input">
+                        <label for="quantity">Quantidade de rifas:</label>
+                        <input type="number" id="quantity" min="1" max="100" value="1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tipo de número:</label>
+                        <div class="radio-group insta-radio">
+                            <label>
+                                <input type="radio" name="numberType" value="random" checked>
+                                <span class="radio-custom"></span>
+                                Números aleatórios
+                            </label>
+                            
+                            <label>
+                                <input type="radio" name="numberType" value="choose">
+                                <span class="radio-custom"></span>
+                                Escolher meus números
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group insta-input" id="numbersContainer" style="display: none;">
+                        <label for="chosenNumbers">Seus números (separados por vírgula):</label>
+                        <input type="text" id="chosenNumbers" placeholder="Ex: 7, 13, 42">
+                        <small class="insta-small">Números de 1 a 1000</small>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="button" id="calculateBtn" class="insta-button">
+                            <i class="fas fa-calculator"></i> Calcular Valor
+                        </button>
+                    </div>
+
+                    <div id="totalValue" class="total-value" style="display: none;">
+                        <div class="value-box">
+                            <span class="value-label">Total:</span>
+                            <span id="totalAmount" class="value-amount">R$0,00</span>
+                        </div>
+                        <p class="value-info">Você está comprando <span id="quantityDisplay">0</span> número(s)</p>
+                    </div>
+
+                    <div id="userData" style="display: none;">
+                        <h3><i class="fas fa-user-edit"></i> Seus dados</h3>
+                        
+                        <div class="form-group insta-input">
+                            <label for="fullName">Nome completo:</label>
+                            <input type="text" id="fullName" required>
+                        </div>
+
+                        <div class="form-group insta-input">
+                            <label for="birthDate">Data de nascimento:</label>
+                            <input type="date" id="birthDate" required>
+                        </div>
+
+                        <div class="form-group insta-input">
+                            <label for="cpf">CPF:</label>
+                            <input type="text" id="cpf" required placeholder="000.000.000-00">
+                        </div>
+
+                        <div class="form-group insta-input">
+                            <label for="phone">Celular:</label>
+                            <input type="tel" id="phone" required placeholder="(00) 00000-0000">
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" id="buyBtn" class="insta-button insta-button-primary">
+                                <i class="fab fa-whatsapp"></i> Finalizar pelo WhatsApp
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </main>
+
+        <footer class="instagram-footer">
+            <div class="footer-nav">
+                <a href="#"><i class="fas fa-home"></i></a>
+                <a href="#"><i class="fas fa-search"></i></a>
+                <a href="#"><i class="fas fa-plus-square"></i></a>
+                <a href="#"><i class="far fa-heart"></i></a>
+                <a href="#"><i class="far fa-user"></i></a>
+            </div>
+            <p class="footer-copy">© 2023 RIFA 10K - Não afiliado ao Instagram</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
