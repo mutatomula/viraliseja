@@ -456,11 +456,6 @@ button:focus, input:focus {
     outline-offset: 2px;
 }
 
-.mobile-optimized {
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
-}
-
 .alert {
     padding: 12px;
     border-radius: 8px;
