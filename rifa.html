@@ -40,13 +40,13 @@
 
             <div class="rifa-card">
                 <div class="card-header">
-                    <div class="profile-pic" id="profilePic">R</div>
+                    <div class="profile-pic">R</div>
                     <span>rifa_10k_oficial</span>
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
                 
                 <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Rifa 10K Seguidores" id="postImage">
+                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Rifa 10K Seguidores">
                 </div>
                 
                 <div class="card-actions">
@@ -68,14 +68,15 @@
                     <p>🔹 Total de 1.000 números disponíveis</p>
                     <p>🔹 Escolha seus números ou receba aleatórios</p>
                     <p>🔹 Sorteio será transmitido ao vivo</p>
+                    <p>🔹 Pagamento via PIX</p>
                     <p>🔹 Entrega imediata após confirmação</p>
                     <p>#Rifa10K #Sorteio #InstagramGrowth</p>
                 </div>
             </div>
 
             <div class="rifa-form-container">
-                <div id="errorAlert" class="alert alert-error" style="display: none;"></div>
-                <div id="successAlert" class="alert alert-success" style="display: none;"></div>
+                <div id="errorAlert" class="alert alert-error"></div>
+                <div id="successAlert" class="alert alert-success"></div>
                 
                 <h2><i class="fas fa-ticket-alt"></i> Compre seus números</h2>
                 
@@ -102,7 +103,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group insta-input" id="numbersContainer" style="display: none;">
+                    <div class="form-group insta-input" id="numbersContainer">
                         <label for="chosenNumbers">Seus números (separados por vírgula):</label>
                         <input type="text" id="chosenNumbers" placeholder="Ex: 7, 13, 42">
                         <small class="insta-small">Números de 1 a 1000</small>
@@ -114,7 +115,7 @@
                         </button>
                     </div>
 
-                    <div id="totalValue" class="total-value" style="display: none;">
+                    <div id="totalValue" class="total-value">
                         <div class="value-box">
                             <span class="value-label">Total:</span>
                             <span id="totalAmount" class="value-amount">R$0,00</span>
@@ -122,7 +123,7 @@
                         <p class="value-info">Você está comprando <span id="quantityDisplay">0</span> número(s)</p>
                     </div>
 
-                    <div id="userData" style="display: none;">
+                    <div id="userData">
                         <h3><i class="fas fa-user-edit"></i> Seus dados</h3>
                         
                         <div class="form-group insta-input">
@@ -131,8 +132,8 @@
                         </div>
 
                         <div class="form-group insta-input">
-                            <label for="birthDate">Data de nascimento:</label>
-                            <input type="text" id="birthDate" required>
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" required>
                         </div>
 
                         <div class="form-group insta-input">
