@@ -135,24 +135,6 @@ document.addEventListener('DOMContentLoaded', function() {
         this.value = value;
     });
 
-    // Validar data de nascimento
-    const birthDate = document.getElementById('birthDate');
-    birthDate.addEventListener('change', function() {
-        const today = new Date();
-        const birthDate = new Date(this.value);
-        const age = today.getFullYear() - birthDate.getFullYear();
-        const monthDiff = today.getMonth() - birthDate.getMonth();
-        
-        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-        
-        if (age < 18) {
-            showError('Você deve ter pelo menos 18 anos para participar.');
-            this.value = '';
-        }
-    });
-
     // Enviar formulário
     form.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -160,28 +142,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const quantity = parseInt(quantityInput.value);
         const isRandom = randomRadio.checked;
         const fullName = document.getElementById('fullName').value.trim();
-        const birthDateValue = document.getElementById('birthDate').value;
+        const email = document.getElementById('email').value.trim();
         const cpfValue = cpf.value.trim();
         const phoneValue = phone.value.trim();
         
         // Validar dados
-        if (!fullName) {
-            showError('Por favor, preencha seu nome completo.');
-            return;
-        }
-        
-        if (!birthDateValue) {
-            showError('Por favor, preencha sua data de nascimento.');
-            return;
-        }
-        
-        if (!cpfValue || cpfValue.length < 14) {
-            showError('Por favor, preencha um CPF válido.');
-            return;
-        }
-        
-        if (!phoneValue || phoneValue.length < 15) {
-            showError('Por favor, preencha um número de celular válido.');
+        if (!fullName || !email || !cpfValue || !phoneValue) {
+            showError('Por favor, preencha todos os campos obrigatórios.');
             return;
         }
         
@@ -218,13 +185,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         `🔢 *NÚMEROS DA RIFA*\n${ticketNumbers.join(', ')}\n\n` +
                         `👤 *DADOS PESSOAIS*\n` +
                         `• Nome completo: ${fullName}\n` +
-                        `• Data de nascimento: ${birthDateValue}\n` +
+                        `• E-mail: ${email}\n` +
                         `• CPF: ${cpfValue}\n` +
                         `• Celular: ${phoneValue}\n\n` +
-                        `📝 *INFORMAÇÕES ADICIONAIS*\n` +
-                        `• Tipo de números: ${isRandom ? 'Aleatórios' : 'Escolhidos'}\n` +
-                        `• Data/hora: ${new Date().toLocaleString('pt-BR')}\n\n` +
-                        `Por favor, confirme os dados acima e informe como devo proceder com o pagamento. Obrigado!`;
+                        `💳 *FORMA DE PAGAMENTO*\n` +
+                        `Pagamento via PIX\n\n` +
+                        `Por favor, envie o comprovante para finalizar.`;
         
         // Codificar mensagem para URL
         const encodedMessage = encodeURIComponent(message);
