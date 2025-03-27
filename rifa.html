@@ -5,7 +5,489 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rifa de 10K Seguidores | Instagram</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --insta-primary: #405DE6;
+            --insta-purple: #833AB4;
+            --insta-pink: #C13584;
+            --insta-red: #E1306C;
+            --insta-dark: #262626;
+            --insta-gray: #8E8E8E;
+            --insta-light: #FAFAFA;
+            --insta-border: #DBDBDB;
+            --insta-background: #FAFAFA;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--insta-background);
+            color: var(--insta-dark);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        .instagram-container {
+            max-width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            min-height: 100vh;
+            position: relative;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .instagram-header {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--insta-border);
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .header-content h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .header-content h1 i {
+            color: var(--insta-purple);
+            font-size: 1.5rem;
+        }
+
+        .header-content p {
+            font-size: 0.875rem;
+            color: var(--insta-gray);
+            margin-top: 4px;
+        }
+
+        .story-highlight {
+            display: flex;
+            justify-content: space-around;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--insta-border);
+            margin-bottom: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            background: white;
+        }
+
+        .highlight-item {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            padding: 0 8px;
+        }
+
+        .highlight-circle {
+            width: 66px;
+            height: 66px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--insta-primary), var(--insta-purple), var(--insta-red));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .highlight-item span {
+            font-size: 0.75rem;
+            color: var(--insta-dark);
+        }
+
+        .rifa-card {
+            border: 1px solid var(--insta-border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            background-color: white;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            gap: 10px;
+        }
+
+        .card-header img {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid transparent;
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D) border-box;
+        }
+
+        .card-header span {
+            font-weight: 500;
+            flex: 1;
+            font-size: 0.875rem;
+        }
+
+        .card-header i {
+            color: var(--insta-dark);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 0;
+            padding-bottom: 100%;
+            position: relative;
+            background-color: var(--insta-light);
+        }
+
+        .card-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-actions {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 12px;
+        }
+
+        .action-left {
+            display: flex;
+            gap: 16px;
+        }
+
+        .card-actions i {
+            font-size: 1.5rem;
+            color: var(--insta-dark);
+        }
+
+        .card-likes {
+            padding: 0 12px 8px;
+            font-size: 0.875rem;
+        }
+
+        .card-likes strong {
+            font-weight: 500;
+        }
+
+        .card-description {
+            padding: 0 12px 12px;
+            font-size: 0.875rem;
+            white-space: pre-line;
+        }
+
+        .card-description p {
+            margin-bottom: 6px;
+        }
+
+        .rifa-form-container {
+            background-color: white;
+            border: 1px solid var(--insta-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 80px;
+        }
+
+        .rifa-form-container h2 {
+            font-size: 1.125rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--insta-dark);
+        }
+
+        .rifa-form-container h2 i {
+            color: var(--insta-purple);
+        }
+
+        .rifa-form-container h3 {
+            font-size: 1rem;
+            margin: 20px 0 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--insta-dark);
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .insta-input {
+            position: relative;
+        }
+
+        .insta-input label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.875rem;
+            color: var(--insta-dark);
+            font-weight: 500;
+        }
+
+        .insta-input input {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid var(--insta-border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--insta-light);
+            transition: border 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .insta-input input:focus {
+            border-color: var(--insta-gray);
+            outline: none;
+        }
+
+        .insta-small {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--insta-gray);
+            margin-top: 4px;
+        }
+
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .insta-radio label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            padding: 8px 0;
+        }
+
+        .radio-custom {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--insta-gray);
+            border-radius: 50%;
+            display: inline-block;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .radio-custom::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(45deg, var(--insta-primary), var(--insta-purple));
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.2s;
+        }
+
+        .insta-radio input[type="radio"] {
+            display: none;
+        }
+
+        .insta-radio input[type="radio"]:checked + .radio-custom::after {
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .insta-radio input[type="radio"]:checked + .radio-custom {
+            border-color: var(--insta-purple);
+        }
+
+        .insta-button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            background-color: var(--insta-light);
+            color: var(--insta-dark);
+            border: 1px solid var(--insta-border);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.2s;
+            -webkit-appearance: none;
+        }
+
+        .insta-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .insta-button-primary {
+            background: linear-gradient(45deg, var(--insta-primary), var(--insta-purple));
+            color: white;
+            border: none;
+        }
+
+        .insta-button-primary:hover {
+            opacity: 0.9;
+        }
+
+        .total-value {
+            background-color: var(--insta-light);
+            border: 1px solid var(--insta-border);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .value-box {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .value-label {
+            font-weight: 500;
+            font-size: 1rem;
+        }
+
+        .value-amount {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--insta-purple);
+        }
+
+        .value-info {
+            font-size: 0.875rem;
+            color: var(--insta-gray);
+        }
+
+        .value-info span {
+            font-weight: 500;
+            color: var(--insta-dark);
+        }
+
+        .instagram-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: white;
+            border-top: 1px solid var(--insta-border);
+            padding: 12px 0 8px;
+            z-index: 50;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 0 16px;
+        }
+
+        .footer-nav a {
+            color: var(--insta-dark);
+            font-size: 1.5rem;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer-copy {
+            text-align: center;
+            font-size: 0.625rem;
+            color: var(--insta-gray);
+            margin-top: 8px;
+        }
+
+        @media (max-width: 500px) {
+            .instagram-header {
+                padding: 12px;
+            }
+            
+            .highlight-circle {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .rifa-form-container {
+                padding: 14px;
+            }
+            
+            .insta-input input {
+                padding: 14px 12px;
+            }
+            
+            .insta-button {
+                padding: 15px;
+            }
+        }
+
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+
+        button:focus, input:focus {
+            outline: 2px solid var(--insta-primary);
+            outline-offset: 2px;
+        }
+
+        .alert {
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            font-size: 0.875rem;
+            display: none;
+        }
+
+        .alert-error {
+            background-color: #FFEBEE;
+            color: #C62828;
+            border: 1px solid #EF9A9A;
+        }
+
+        .alert-success {
+            background-color: #E8F5E9;
+            color: #2E7D32;
+            border: 1px solid #A5D6A7;
+        }
+
+        #numbersContainer {
+            display: none;
+        }
+
+        #userData {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="instagram-container">
@@ -40,13 +522,13 @@
 
             <div class="rifa-card">
                 <div class="card-header">
-                    <div class="profile-pic">R</div>
-                    <span>rifa_10k_oficial</span>
+                   <img src="e31e99ab-3608-413f-aaee-2f9bd9757b9d.webp" alt="Foto de perfil">
+                    <span>viralizeja_oficial</span>
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
                 
                 <div class="card-image">
-                    <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1074&q=80" alt="Rifa 10K Seguidores">
+                    <img src="Bege e Cinza Minimalista Citação Post para Instagram.png" alt="Rifa 10K Seguidores">
                 </div>
                 
                 <div class="card-actions">
@@ -63,8 +545,8 @@
                 </div>
                 
                 <div class="card-description">
-                    <p><strong>rifa_10k_oficial</strong> 🎉 PARTICIPE DA RIFA E GANHE 10K SEGUIDORES REAIS! 🎉</p>
-                    <p>🔹 Cada número custa apenas <strong>R$2,29</strong></p> <!-- VALOR ALTERADO AQUI -->
+                    <p><strong>viralizeja_oficial</strong> 🎉 PARTICIPE DA RIFA E GANHE 10K SEGUIDORES REAIS! 🎉</p>
+                    <p>🔹 Cada número custa apenas R$2,29</p>
                     <p>🔹 Total de 1.000 números disponíveis</p>
                     <p>🔹 Escolha seus números ou receba aleatórios</p>
                     <p>🔹 Sorteio será transmitido ao vivo</p>
@@ -168,6 +650,135 @@
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Configurações
+            const PRICE_PER_TICKET = 2.29;
+            const WHATSAPP_NUMBER = "5511985310434";
+            
+            // Elementos
+            const form = document.getElementById('rifaForm');
+            const quantityInput = document.getElementById('quantity');
+            const randomRadio = document.querySelector('input[name="numberType"][value="random"]');
+            const chooseRadio = document.querySelector('input[name="numberType"][value="choose"]');
+            const numbersContainer = document.getElementById('numbersContainer');
+            const chosenNumbersInput = document.getElementById('chosenNumbers');
+            const calculateBtn = document.getElementById('calculateBtn');
+            const totalValueDiv = document.getElementById('totalValue');
+            const totalAmountSpan = document.getElementById('totalAmount');
+            const quantityDisplay = document.getElementById('quantityDisplay');
+            const userDataDiv = document.getElementById('userData');
+            const errorAlert = document.getElementById('errorAlert');
+            const successAlert = document.getElementById('successAlert');
+
+            // Mostrar/ocultar campo de números escolhidos
+            chooseRadio.addEventListener('change', function() {
+                numbersContainer.style.display = this.checked ? 'block' : 'none';
+            });
+
+            // Calcular valor
+            calculateBtn.addEventListener('click', function() {
+                const quantity = parseInt(quantityInput.value);
+                
+                // Validações
+                if (isNaN(quantity) || quantity < 1 || quantity > 100) {
+                    showError('Quantidade inválida (1-100)');
+                    return;
+                }
+
+                if (chooseRadio.checked) {
+                    const numbers = chosenNumbersInput.value.split(',').map(n => parseInt(n.trim()));
+                    if (numbers.some(n => isNaN(n) || n < 1 || n > 1000)) {
+                        showError('Números inválidos (1-1000)');
+                        return;
+                    }
+                }
+
+                // Calcular total
+                const total = (quantity * PRICE_PER_TICKET).toFixed(2);
+                totalAmountSpan.textContent = `R$${total.replace('.', ',')}`;
+                quantityDisplay.textContent = quantity;
+                
+                // Mostrar seções
+                totalValueDiv.style.display = 'block';
+                userDataDiv.style.display = 'block';
+                userDataDiv.scrollIntoView({ behavior: 'smooth' });
+                
+                showSuccess('Valor calculado com sucesso!');
+            });
+
+            // Formatar CPF
+            document.getElementById('cpf').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 3) value = value.slice(0,3) + '.' + value.slice(3);
+                if (value.length > 7) value = value.slice(0,7) + '.' + value.slice(7);
+                if (value.length > 11) value = value.slice(0,11) + '-' + value.slice(11);
+                e.target.value = value.slice(0, 14);
+            });
+
+            // Formatar telefone
+            document.getElementById('phone').addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 0) value = '(' + value.slice(0,2) + ') ' + value.slice(2);
+                if (value.length > 10) value = value.slice(0,10) + '-' + value.slice(10);
+                e.target.value = value.slice(0, 15);
+            });
+
+            // Enviar para WhatsApp
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Validar dados
+                const fullName = document.getElementById('fullName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const cpf = document.getElementById('cpf').value.trim();
+                const phone = document.getElementById('phone').value.trim();
+                
+                if (!fullName || !email || !cpf || !phone) {
+                    showError('Preencha todos os dados');
+                    return;
+                }
+
+                // Gerar números
+                let numbers = [];
+                if (randomRadio.checked) {
+                    for (let i = 0; i < quantityInput.value; i++) {
+                        numbers.push(Math.floor(Math.random() * 1000) + 1);
+                    }
+                } else {
+                    numbers = chosenNumbersInput.value.split(',').map(n => parseInt(n.trim()));
+                }
+
+                // Criar mensagem
+                const message = `🎟️ *COMPRA DE RIFA - 10K SEGUIDORES* 🎟️\n\n` +
+                                `📌 *Resumo*\n` +
+                                `• ${quantityInput.value} rifas x R$${PRICE_PER_TICKET.toFixed(2)}\n` +
+                                `• Total: R$${(quantityInput.value * PRICE_PER_TICKET).toFixed(2)}\n` +
+                                `• Números: ${numbers.join(', ')}\n\n` +
+                                `👤 *Dados*\n` +
+                                `• Nome: ${fullName}\n` +
+                                `• E-mail: ${email}\n` +
+                                `• CPF: ${cpf}\n` +
+                                `• Celular: ${phone}\n\n` +
+                                `💳 *Pagamento via PIX*\n` +
+                                `Por favor, envie o comprovante para este WhatsApp.`;
+
+                // Redirecionar
+                window.location.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+            });
+
+            function showError(msg) {
+                errorAlert.textContent = msg;
+                errorAlert.style.display = 'block';
+                setTimeout(() => errorAlert.style.display = 'none', 5000);
+            }
+
+            function showSuccess(msg) {
+                successAlert.textContent = msg;
+                successAlert.style.display = 'block';
+                setTimeout(() => successAlert.style.display = 'none', 5000);
+            }
+        });
+    </script>
 </body>
 </html>
